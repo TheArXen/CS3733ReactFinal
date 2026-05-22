@@ -10,39 +10,46 @@ A React application that allows users to:
 - View all uploaded files
 - View file contents in the browser
 - Download files back to their device
+- Delete files from storage
 
-## Setup Instructions
+## Architecture
+- **Frontend:** React + Vite + Tailwind CSS
+- **Backend:** Express.js middleware layer
+- **Storage:** Supabase
 
-### 1. Create a Supabase Storage Bucket
-1. Go to your Supabase dashboard
-2. Click **Storage** in the left sidebar
-3. Click **New bucket**
-4. Name it `files` (must match BUCKET_NAME in App.jsx)
-5. Set it to **Public** so files can be accessed
+## How to Run
 
-### 2. Install Dependencies
+### Prerequisites
+- Node.js installed
+- Git installed
+
+### Step 1 — Clone the repo
 ```bash
-npm install
+git clone https://github.com/TheArXen/CS3733ReactFinal.git
+cd CS3733ReactFinal
 ```
 
-### 3. Run the App
+### Step 2 — Start the Express server (Terminal 1)
 ```bash
+cd server
+npm install
 npm start
 ```
-The app will open at `http://localhost:3000`
+Server runs on `http://localhost:5000`
 
-### 4. Test on a Different Computer
-Option A - Run locally:
-- Copy the project folder to the other computer
-- Run `npm install` then `npm start`
+### Step 3 — Start the React app (Terminal 2)
+```bash
+cd supabase-app-vite
+npm install
+npm run dev
+```
+App runs on `http://localhost:5173`
 
-Option B - Deploy for free (recommended):
-- Push to GitHub
-- Go to [vercel.com](https://vercel.com) and import the repo
-- Deploy with one click — no setup needed
-- Share the URL with the professor
+### Step 4 — Open in browser
+http://localhost:5173
 
-## Troubleshooting
-- **Upload fails:** Make sure the `files` bucket exists in Supabase and is set to Public
-- **Files don't load:** Check your Supabase URL and anon key in App.jsx
-- **CORS error:** Go to Supabase → Storage → Policies and make sure public access is enabled
+## API Endpoints
+- `POST /upload` — uploads a text file to Supabase
+- `GET /files` — lists all uploaded files
+- `GET /download/:filename` — downloads a file
+- `DELETE /files/:filename` — deletes a file
