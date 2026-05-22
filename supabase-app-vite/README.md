@@ -1,16 +1,55 @@
-# React + Vite
+# CS 3733 - Supabase File Upload/Download Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Course:** CS 3733 - Software Engineering  
+**Instructor:** Prof. Wilson Wong  
+**Project:** Final Project Component Demonstration
 
-Currently, two official plugins are available:
+## What This Does
+A React application that allows users to:
+- Upload a `.txt` file from their computer to Supabase storage
+- View all uploaded files
+- View file contents in the browser
+- Download files back to their device
+- Delete files from storage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Architecture
+- **Frontend:** React + Vite + Tailwind CSS
+- **Backend:** Express.js middleware layer
+- **Storage:** Supabase
 
-## React Compiler
+## How to Run
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- Node.js installed
+- Git installed
 
-## Expanding the ESLint configuration
+### Step 1 — Clone the repo
+```bash
+git clone https://github.com/TheArXen/CS3733ReactFinal.git
+cd CS3733ReactFinal
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Step 2 — Start the Express server (Terminal 1)
+```bash
+cd server
+npm install
+npm start
+```
+Server runs on `http://localhost:5000`
+
+### Step 3 — Start the React app (Terminal 2)
+```bash
+cd supabase-app-vite
+npm install
+npm run dev
+```
+App runs on `http://localhost:5173`
+
+### Step 4 — Open in browser
+http://localhost:5173
+
+## API Endpoints
+- `POST /upload` — uploads a text file to Supabase
+- `GET /files` — lists all uploaded files
+- `GET /download/:filename` — downloads a file
+- `DELETE /files/:filename` — deletes a file
