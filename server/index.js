@@ -15,11 +15,16 @@ const supabase = createClient(
 );
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: ["http://localhost:3000", "http://localhost:5173"] }));
 app.use(express.json());
 
 // Multer - store file in memory temporarily
 const upload = multer({ storage: multer.memoryStorage() });
+
+// GET / - Health check
+app.get("/", (req, res) => {
+    res.json({ message: "CS 3733 File Storage API is running" });
+});
 
 // GET /files - List all files
 app.get("/files", async (req, res) => {
