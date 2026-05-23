@@ -53,3 +53,13 @@ http://localhost:5173
 - `GET /files` — lists all uploaded files
 - `GET /download/:filename` — downloads a file
 - `DELETE /files/:filename` — deletes a file
+
+### Important: Environment Variables
+The server requires a `.env` file in the `server` folder. Create it with the following contents:
+
+```
+SUPABASE_URL=https://vwfokozrpmbzofgropit.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3Zm9rb3pycG1iem9mZ3JvcGl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2OTMyMzEsImV4cCI6MjA5NDI2OTIzMX0.x3qEtumkwsrcLQcb4bobZ2tjmvAhEOWpDNnEp9GgBXI
+PORT=5000
+BUCKET_NAME=files
+```
